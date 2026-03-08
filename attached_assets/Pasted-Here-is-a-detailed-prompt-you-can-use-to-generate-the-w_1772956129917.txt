@@ -1,0 +1,96 @@
+Here is a detailed prompt you can use to generate the website (for tools like AI website builders, UI generators, or developers). It clearly explains the design, structure, theme, and functionality.
+Detailed Prompt for Website Design – IJ Bangles
+Prompt:
+Create a modern, responsive e-commerce showcase website for a bangle company named “IJ Bangles”. The theme of the website should represent “Heritage Rajasthan”, highlighting the rich culture, traditions, colors, and craftsmanship of Rajasthan.
+The design should reflect royal Rajasthani aesthetics, including warm colors like maroon, gold, royal red, beige, and traditional patterns inspired by Rajasthani art such as mandala designs, jharokha-style borders, and ethnic motifs.
+1. Homepage (Hero Section)
+At the top of the homepage, create a full-width hero section with a background video showing artisans making traditional bangles by hand in a workshop. The video should emphasize craftsmanship, culture, and tradition.
+Overlay the video with:
+Heading: “Crafting Tradition, One Bangle at a Time”
+Subheading: “Experience the timeless beauty of Rajasthan with IJ Bangles”
+Buttons:
+Explore Collection
+Watch Craftsmanship
+Add a subtle golden overlay and elegant typography to maintain a royal heritage feel.
+2. Latest Bangle Collection Section
+Below the video hero section, create a section titled:
+“Our Latest Collection”
+Display bangles in a responsive grid layout (3–4 columns) with high-quality product images.
+Each product card should include:
+Bangle image
+Collection name
+Short description
+Price
+“View Details” or “Shop Now” button
+Example collections:
+Royal Kundan Bangles
+Traditional Lac Bangles
+Bridal Chooda Collection
+Stone Studded Bangles
+Festival Special Bangles
+Add hover effects where bangles slightly zoom or glow.
+3. Heritage of Rajasthan Section
+Create a section explaining the cultural significance of bangles in Rajasthan.
+Include:
+Images of traditional Rajasthani women wearing bangles
+Decorative background inspired by Jaipur palaces or Hawa Mahal architecture
+Text example: “Bangles have been an essential part of Rajasthani culture for centuries, symbolizing prosperity, tradition, and beauty. At IJ Bangles, we preserve this heritage by blending traditional craftsmanship with modern designs.”
+4. Craftsmanship Section
+Create a split layout section with:
+Left side: Image/video of artisans crafting bangles.
+Right side: Text explaining the handmade process:
+Traditional lac melting
+Stone embedding
+Hand polishing
+Design finishing
+Title: “The Art of Handmade Bangles”
+5. Featured Collections Carousel
+Add a horizontal carousel slider showing premium collections like:
+Bridal Collection
+Festival Collection
+Designer Bangles
+Traditional Lac Bangles
+Each slide should include large product images and a short description.
+6. Customer Testimonials
+Add a section with customer reviews.
+Example: ⭐⭐⭐⭐⭐
+“IJ Bangles perfectly capture the essence of Rajasthan. Beautiful craftsmanship!”
+Include profile images and star ratings.
+7. Instagram / Gallery Section
+Display a gallery of bangles and cultural photos with a title:
+“Styled with Tradition”
+Grid of images showing:
+Brides wearing bangles
+Festive looks
+Close-ups of bangles
+8. Footer
+Create a traditional styled footer with a Rajasthani decorative border.
+Sections:
+About IJ Bangles Short story about the brand.
+Quick Links
+Home
+Collections
+Heritage
+Contact
+Contact Information
+Phone
+Email
+Address (Jaipur, Rajasthan)
+Social Media Icons Instagram
+Facebook
+WhatsApp
+Add a final line:
+“© 2026 IJ Bangles – Celebrating the Heritage of Rajasthan”
+Design Requirements
+Fully responsive design
+Smooth scroll animations
+Elegant Indian-style fonts
+Use gold accents for royal look
+Background patterns inspired by Rajasthani textiles
+Clean modern UI mixed with traditional cultural elements
+If you want, I can also give you:
+Full HTML + CSS + JS code for this website
+React website version
+AI prompt to generate the video for the hero section
+Logo prompt for IJ Bangles
+Just tell me 👍
