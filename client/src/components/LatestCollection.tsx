@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
@@ -13,28 +14,28 @@ import stoneImg from "../assets/images/bangle-stone.png";
 
 const collections = [
   {
-    id: 1,
+    id: "royal-kundan",
     name: "Royal Kundan Bangles",
     description: "Intricate Kundan work with classic gold finish.",
     price: "₹2,499",
     image: kundanImg
   },
   {
-    id: 2,
+    id: "traditional-lac",
     name: "Traditional Lac Bangles",
     description: "Vibrant colors with authentic Rajasthani mirror work.",
     price: "₹899",
     image: lacImg
   },
   {
-    id: 3,
+    id: "bridal-chooda",
     name: "Bridal Chooda Collection",
     description: "Complete bridal set symbolizing prosperity.",
     price: "₹5,999",
     image: bridalImg
   },
   {
-    id: 4,
+    id: "stone-studded",
     name: "Stone Studded Bangles",
     description: "Elegant artificial diamonds for a luxurious look.",
     price: "₹1,899",
@@ -70,26 +71,39 @@ export default function LatestCollection() {
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{item.description}</p>
                 <div className="w-full flex items-center justify-between mt-auto">
                   <span className="font-semibold text-lg text-primary">{item.price}</span>
-                  <Button 
-                    variant="outline" 
-                    className="rounded-none border-primary text-primary hover:bg-primary hover:text-white transition-colors"
-                    data-testid={`button-view-details-${item.id}`}
-                  >
-                    View Details
-                  </Button>
+                  <Link href={`/collections/${item.id}`}>
+                    <Button 
+                      variant="outline" 
+                      className="rounded-none border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                      data-testid={`button-view-details-${item.id}`}
+                    >
+                      View Details
+                    </Button>
+                  </Link>
                 </div>
               </CardFooter>
             </Card>
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <Button 
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 rounded-none uppercase tracking-widest"
-            data-testid="button-view-all"
-          >
-            View All Collections
-          </Button>
+        <div className="mt-16 text-center space-x-4">
+          <Link href="/collections">
+            <Button 
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 rounded-none uppercase tracking-widest"
+              data-testid="button-view-all"
+            >
+              View All Collections
+            </Button>
+          </Link>
+          <Link href="/admin/collections/new">
+            <Button 
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-6 rounded-none uppercase tracking-widest"
+              data-testid="button-add-collection"
+            >
+              Add Collection
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
