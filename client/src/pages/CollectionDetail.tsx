@@ -1,19 +1,32 @@
 import React from "react";
 import { useRoute, Link } from "wouter";
-import { mockCollections } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ArrowLeft, ShoppingBag } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 export default function CollectionDetail() {
   const [, params] = useRoute("/collections/:id");
   const collectionId = params?.id;
   
-  const collection = mockCollections.find(c => c.id === collectionId);
+  const { data: collection, isLoading, error } = useQuery({
+    queryKey: ['collection', collectionId],
+    queryFn: () => api.getCollectionById(collectionId!),
+    enabled: !!collectionId
+  });
 
-  if (!collection) {
+  if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+        <h1 className="text-2xl font-serif text-primary">Loading collection data...</h1>
+      </div>
+    );
+  }
+
+  if (error || !collection) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
         <h1 className="text-3xl font-serif text-primary mb-4">Collection Not Found</h1>
         <Link href="/collections">
           <Button variant="outline" className="rounded-none border-primary text-primary">Back to Collections</Button>
@@ -83,7 +96,6 @@ export default function CollectionDetail() {
                     alt={`${collection.name} detail ${idx + 1}`} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* Mock Zoom-in functionality hint */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                     <span className="text-white text-sm tracking-widest uppercase border border-white px-4 py-2 bg-black/40 backdrop-blur-sm">Zoom</span>
                   </div>
