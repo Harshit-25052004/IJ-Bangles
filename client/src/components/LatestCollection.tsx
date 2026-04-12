@@ -2,48 +2,33 @@ import React from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-
-// We will use import for images once they are available, or use placeholder strings that will map to the generated files.
-// For now, since they are being generated to src/assets/images/, we will import them directly.
-// If Vite fails to resolve them initially, we might need a fallback, but assuming they generate correctly.
-
-import kundanImg from "../assets/images/bangle-kundan.png";
-import lacImg from "../assets/images/bangle-lac.png";
-import bridalImg from "../assets/images/bangle-bridal.png";
-import stoneImg from "../assets/images/bangle-stone.png";
-
-const collections = [
-  {
-    id: "royal-kundan",
-    name: "Royal Kundan Bangles",
-    description: "Intricate Kundan work with classic gold finish.",
-    price: "₹2,499",
-    image: kundanImg
-  },
-  {
-    id: "traditional-lac",
-    name: "Traditional Lac Bangles",
-    description: "Vibrant colors with authentic Rajasthani mirror work.",
-    price: "₹899",
-    image: lacImg
-  },
-  {
-    id: "bridal-chooda",
-    name: "Bridal Chooda Collection",
-    description: "Complete bridal set symbolizing prosperity.",
-    price: "₹5,999",
-    image: bridalImg
-  },
-  {
-    id: "stone-studded",
-    name: "Stone Studded Bangles",
-    description: "Elegant artificial diamonds for a luxurious look.",
-    price: "₹1,899",
-    image: stoneImg
-  }
-];
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 export default function LatestCollection() {
+  const { data: collections = [], isLoading } = useQuery({
+    queryKey: ['collections'],
+    queryFn: api.getCollections
+  });
+
+  if (isLoading) {
+    return (
+      <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Our Latest Collection</h2>
+            <div className="h-1 w-24 bg-secondary mx-auto mb-6"></div>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-light">
+              Loading collections...
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Take only first 4 collections for display
+  const displayCollections = collections.slice(0, 4);
   return (
     <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -56,11 +41,11 @@ export default function LatestCollection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {collections.map((item) => (
+          {displayCollections.map((item) => (
             <Card key={item.id} className="group overflow-hidden rounded-none border-border/50 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500">
               <CardContent className="p-0 overflow-hidden relative aspect-square">
                 <img 
-                  src={item.image} 
+                  src={item.mainImage} 
                   alt={item.name} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

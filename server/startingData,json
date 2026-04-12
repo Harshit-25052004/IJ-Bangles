@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "Kundan Bangles",
+    "description": "Traditional kundan bangles with royal design",
+    "price": 5000,
+    "mainImage": "/images/bangle-kundan.png",
+    "images": [
+      "/images/bangle-kundan.png",
+      "/images/bangle-kundan-2.png"
+    ],
+    "createdAt": "2026-04-12T10:00:00"
+  },
+  {
+    "id": "2",
+    "name": "Gold Bangles",
+    "description": "Elegant gold bangles for weddings",
+    "price": 8000,
+    "mainImage": "/images/bangle-gold.png",
+    "images": [
+      "/images/bangle-gold.png",
+      "/images/bangle-gold-2.png"
+    ],
+    "createdAt": "2026-04-12T11:00:00"
+  },
+  {
+    "id": "3",
+    "name": "Diamond Bangles",
+    "description": "Premium diamond studded bangles",
+    "price": 15000,
+    "mainImage": "/images/bangle-diamond.png",
+    "images": [
+      "/images/bangle-diamond.png",
+      "/images/bangle-diamond-2.png"
+    ],
+    "createdAt": "2026-04-12T12:00:00"
+  },
+  {
+    "id": "4",
+    "name": "Bridal Bangles Set",
+    "description": "Complete bridal bangle set with traditional touch",
+    "price": 20000,
+    "mainImage": "/images/bangle-bridal.png",
+    "images": [
+      "/images/bangle-bridal.png",
+      "/images/bangle-bridal-2.png"
+    ],
+    "createdAt": "2026-04-12T13:00:00"
+  },
+  {
+    "id": "5",
+    "name": "Antique Bangles",
+    "description": "Vintage antique finish bangles",
+    "price": 6000,
+    "mainImage": "/images/bangle-antique.png",
+    "images": [
+      "/images/bangle-antique.png",
+      "/images/bangle-antique-2.png"
+    ],
+    "createdAt": "2026-04-12T14:00:00"
+  }
+]

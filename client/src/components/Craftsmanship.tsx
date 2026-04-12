@@ -1,5 +1,4 @@
 import React from "react";
-import artisanImg from "../assets/images/artisan-hands.png";
 
 export default function Craftsmanship() {
   const steps = [
@@ -14,7 +13,7 @@ export default function Craftsmanship() {
       {/* Left side: Image */}
       <div className="w-full lg:w-1/2 min-h-[50vh] relative">
         <img 
-          src={artisanImg} 
+          src="/assets/images/artisan-hands.png" 
           alt="Artisans crafting bangles" 
           className="absolute inset-0 w-full h-full object-cover"
         />

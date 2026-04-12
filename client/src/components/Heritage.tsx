@@ -1,5 +1,4 @@
 import React from "react";
-import heritageImg from "../assets/images/heritage-women.png";
 
 export default function Heritage() {
   return (
@@ -12,7 +11,7 @@ export default function Heritage() {
           <div className="order-2 lg:order-1 relative">
             <div className="absolute -inset-4 border-2 border-secondary/30 rounded-t-full hidden lg:block"></div>
             <img 
-              src={heritageImg} 
+              src="/assets/images/heritage-women.png" 
               alt="Rajasthani Heritage" 
               className="w-full h-auto object-cover rounded-t-[40%] rounded-b-md shadow-2xl relative z-10"
             />

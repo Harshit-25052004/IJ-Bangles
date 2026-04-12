@@ -1,7 +1,4 @@
 import React from "react";
-import gallery1 from "../assets/images/gallery-1.png";
-import gallery2 from "../assets/images/gallery-2.png";
-import gallery3 from "../assets/images/gallery-3.png";
 
 export default function Gallery() {
   return (
@@ -17,19 +14,19 @@ export default function Gallery() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="relative group overflow-hidden aspect-square cursor-pointer">
-            <img src={gallery1} alt="Bride wearing bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-1.png" alt="Bride wearing bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Bridal</span>
             </div>
           </div>
           <div className="relative group overflow-hidden aspect-[3/4] md:aspect-square md:-mt-8 cursor-pointer">
-            <img src={gallery2} alt="Festive look" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-2.png" alt="Festive look" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Festive</span>
             </div>
           </div>
           <div className="relative group overflow-hidden aspect-square cursor-pointer">
-            <img src={gallery3} alt="Close up of bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-3.png" alt="Close up of bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Details</span>
             </div>

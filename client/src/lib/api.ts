@@ -1,53 +1,98 @@
-import { mockCollections } from "./mockData";
+import type { Collection, InsertCollection } from "@shared/schema";
 
 // Simulate network delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Keep an in-memory copy of the collections to simulate additions/deletions during the session
-let collectionsStore = [...mockCollections];
+const API_BASE_URL = "/api";
 
 export const api = {
   // GET /api/collections
-  getCollections: async () => {
-    await delay(800); // Simulate loading
-    return collectionsStore;
+  getCollections: async (): Promise<Collection[]> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/collections`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch collections: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching collections:", error);
+      throw error;
+    }
   },
 
   // GET /api/collections/:id
-  getCollectionById: async (id: string) => {
-    await delay(800);
-    const collection = collectionsStore.find(c => c.id === id);
-    if (!collection) {
-      throw new Error("Collection not found");
+  getCollectionById: async (id: string): Promise<Collection> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/collections/${id}`);
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("Collection not found");
+        }
+        throw new Error(`Failed to fetch collection: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching collection:", error);
+      throw error;
     }
-    return collection;
   },
 
   // POST /api/collections
-  createCollection: async (data: any) => {
-    await delay(1200);
-    const newCollection = {
-      id: data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-      name: data.name,
-      description: data.description,
-      // In a real app, these would be uploaded URLs. Here we mock them.
-      mainImage: "https://images.unsplash.com/photo-1599643478514-4a884ebcb80f?q=80&w=800&auto=format&fit=crop", 
-      images: [
-        "https://images.unsplash.com/photo-1599643478514-4a884ebcb80f?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop"
-      ],
-      price: "₹0", // Default or you could add a price field to the form
-      createdAt: new Date().toISOString()
-    };
-    
-    collectionsStore = [...collectionsStore, newCollection];
-    return newCollection;
+  createCollection: async (data: InsertCollection): Promise<Collection> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/collections`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Failed to create collection: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error creating collection:", error);
+      throw error;
+    }
+  },
+
+  // PUT /api/collections/:id
+  updateCollection: async (id: string, data: Partial<InsertCollection>): Promise<Collection> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/collections/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Failed to update collection: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error updating collection:", error);
+      throw error;
+    }
   },
 
   // DELETE /api/collections/:id
-  deleteCollection: async (id: string) => {
-    await delay(800);
-    collectionsStore = collectionsStore.filter(c => c.id !== id);
-    return { success: true };
+  deleteCollection: async (id: string): Promise<{ success: boolean }> => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/collections/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Failed to delete collection: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error deleting collection:", error);
+      throw error;
+    }
   }
 };
