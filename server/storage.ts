@@ -6,7 +6,7 @@ import { MongoClient, ObjectId } from "mongodb";
 let mongoClient: MongoClient | null = null;
 let isConnected = false;
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const MONGODB_URI = process.env.MONGODB_URI ;
 const DATABASE_NAME = "ij_bangles";
 const COLLECTIONS_NAME = "collections";
 
