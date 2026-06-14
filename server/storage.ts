@@ -7,6 +7,10 @@ let mongoClient: MongoClient | null = null;
 let isConnected = false;
 
 const MONGODB_URI = process.env.MONGODB_URI ;
+console.log("Mongo URI exists:", !!process.env.MONGODB_URI);
+console.log(
+  process.env.MONGODB_URI?.replace(/\/\/.*@/, "//***:***@")
+);
 const DATABASE_NAME = "ij_bangles";
 const COLLECTIONS_NAME = "collections";
 
