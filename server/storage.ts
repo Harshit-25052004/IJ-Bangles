@@ -6,7 +6,7 @@ import { MongoClient, ObjectId } from "mongodb";
 let mongoClient: MongoClient | null = null;
 let isConnected = false;
 
-const MONGODB_URI = process.env.MONGODB_URI ;
+const MURI = process.env.MONGODB_URI || "mongodb+srv://harshitkumawat920:%23Harshit25@cluster01.jjqvx.mongodb.net/?appName=cluster01"  ;
 console.log("Mongo URI exists:", !!process.env.MONGODB_URI);
 console.log(
   process.env.MONGODB_URI?.replace(/\/\/.*@/, "//***:***@")
@@ -14,12 +14,16 @@ console.log(
 const DATABASE_NAME = "ij_bangles";
 const COLLECTIONS_NAME = "collections";
 
+if (!MURI) {
+  throw new Error("MONGODB_URI environment variable is missing!");
+}
+
 export async function getMongoClient(): Promise<MongoClient> {
   if (mongoClient && isConnected) {
     return mongoClient;
   }
 
-  mongoClient = new MongoClient(MONGODB_URI);
+  mongoClient = new MongoClient(MURI);
   try {
     await mongoClient.connect();
     console.log("Connected to MongoDB");
