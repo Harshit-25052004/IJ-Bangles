@@ -16,7 +16,7 @@ export default function Hero() {
            playsInline
            className="w-full h-full object-cover opacity-80"
          >
-            <source src="/src/assets/videos/hero-bg.mp4" type="video/mp4" />
+            <source src="/client/src/assets/videos/hero-bg.mp4" type="video/mp4" />
          </video>
       </div>
 
