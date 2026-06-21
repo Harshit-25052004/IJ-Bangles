@@ -1,15 +1,36 @@
 import React from "react";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 
-export default function Gallery() {
+interface GalleryProps {
+  isLoggedIn: boolean;
+}
+
+export default function Gallery({ isLoggedIn }: GalleryProps) {
   return (
     <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Styled with Tradition</h2>
-          <div className="h-1 w-24 bg-secondary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-light">
-            Follow us on Instagram for daily inspiration. Tag @ijbangles to be featured.
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 text-center md:text-left">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Styled with Tradition</h2>
+            <div className="h-1 w-24 bg-secondary mb-6"></div>
+            <p className="text-muted-foreground max-w-2xl font-light">
+              Follow us on Instagram for daily inspiration. Tag @ijbangles to be featured.
+            </p>
+          </div>
+          {isLoggedIn && (
+            <Link href="/admin/collections/new">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-primary text-primary hover:bg-primary hover:text-white"
+                aria-label="Add gallery item"
+                data-testid="button-add-gallery-icon"
+              >
+                +
+              </Button>
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

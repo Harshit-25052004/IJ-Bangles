@@ -5,7 +5,11 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 
-export default function LatestCollection() {
+interface LatestCollectionProps {
+  isLoggedIn: boolean;
+}
+
+export default function LatestCollection({ isLoggedIn }: LatestCollectionProps) {
   const { data: collections = [], isLoading } = useQuery({
     queryKey: ['collections'],
     queryFn: api.getCollections
@@ -32,12 +36,27 @@ export default function LatestCollection() {
   return (
     <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Our Latest Collection</h2>
-          <div className="h-1 w-24 bg-secondary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-light">
-            Discover our meticulously handcrafted designs, where every piece tells a story of royal heritage.
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+          <div className="text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Our Latest Collection</h2>
+            <div className="h-1 w-24 bg-secondary mb-6"></div>
+            <p className="text-muted-foreground max-w-2xl font-light">
+              Discover our meticulously handcrafted designs, where every piece tells a story of royal heritage.
+            </p>
+          </div>
+          {isLoggedIn && (
+            <Link href="/admin/collections/new">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-primary text-primary hover:bg-primary hover:text-white"
+                aria-label="Add collection"
+                data-testid="button-add-collection-icon"
+              >
+                +
+              </Button>
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -71,22 +90,13 @@ export default function LatestCollection() {
           ))}
         </div>
         
-        <div className="mt-16 text-center space-x-4">
+        <div className="mt-16 text-center">
           <Link href="/collections">
             <Button 
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 rounded-none uppercase tracking-widest"
               data-testid="button-view-all"
             >
               View All Collections
-            </Button>
-          </Link>
-          <Link href="/admin/collections/new">
-            <Button 
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-6 rounded-none uppercase tracking-widest"
-              data-testid="button-add-collection"
-            >
-              Add Collection
             </Button>
           </Link>
         </div>
