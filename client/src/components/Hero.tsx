@@ -1,12 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-
-// Optional: import video once generated or use a placeholder/conditional rendering
-// import heroVideo from "../assets/videos/hero-bg.mp4";
+import { Link } from "wouter";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
+    <section id="hero" className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full bg-black z-0">
          <video 
@@ -38,21 +36,25 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          {/* <Button 
-            size="lg" 
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg px-8 py-6 rounded-none uppercase tracking-widest border border-secondary"
-            data-testid="button-explore-collection"
-          >
-            Explore Collection
-          </Button> */}
-          {/* <Button 
-            variant="outline" 
-            size="lg" 
-            className="bg-transparent text-white border-white hover:bg-white/10 text-lg px-8 py-6 rounded-none uppercase tracking-widest backdrop-blur-sm"
-            data-testid="button-watch-craftsmanship"
-          >
-            Watch Craftsmanship
-          </Button> */}
+          <Link href="/collections">
+            <Button 
+              size="lg" 
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-sm md:text-base px-8 py-6 rounded-none uppercase tracking-widest border border-secondary cursor-pointer shadow-lg hover:shadow-xl transition-all"
+              data-testid="button-explore-collection"
+            >
+              Explore Collection
+            </Button>
+          </Link>
+          <a href="#craftsmanship">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="bg-transparent text-white border-white hover:bg-white/10 text-sm md:text-base px-8 py-6 rounded-none uppercase tracking-widest backdrop-blur-sm cursor-pointer transition-all"
+              data-testid="button-watch-craftsmanship"
+            >
+              Our Craftsmanship
+            </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -186,6 +186,7 @@ export class MongoStorage implements IStorage {
   }
 
   async getCollectionById(id: string): Promise<Collection | undefined> {
+    await this.ensureSeedData();
     const collectionsDb = this.getCollectionsDb();
     
     // Try to find by string id first

@@ -169,10 +169,8 @@ export default function AdminAddCollection() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground">
       <header className="bg-primary py-4 px-6 flex items-center shadow-md">
-        <Link href="/collections">
-          <a className="inline-flex items-center text-white/80 hover:text-white transition-colors text-sm uppercase tracking-widest">
-            <ArrowLeft size={16} className="mr-2" /> Back to Store
-          </a>
+        <Link href="/collections" className="inline-flex items-center text-white/80 hover:text-white transition-colors text-sm uppercase tracking-widest">
+          <ArrowLeft size={16} className="mr-2" /> Back to Store
         </Link>
         <div className="mx-auto text-xl font-serif text-secondary italic">Admin Panel</div>
       </header>

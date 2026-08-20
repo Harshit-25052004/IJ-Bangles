@@ -34,7 +34,7 @@ export default function LatestCollection({ isLoggedIn }: LatestCollectionProps) 
   // Take only first 4 collections for display
   const displayCollections = collections.slice(0, 4);
   return (
-    <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
+    <section id="collections" className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
           <div className="text-center md:text-left">
@@ -67,6 +67,9 @@ export default function LatestCollection({ isLoggedIn }: LatestCollectionProps) 
                   src={item.mainImage} 
                   alt={item.name} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/assets/images/bangle-kundan.webp";
+                  }}
                 />
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
               </CardContent>
@@ -74,7 +77,7 @@ export default function LatestCollection({ isLoggedIn }: LatestCollectionProps) 
                 <h3 className="font-serif text-xl font-medium text-foreground mb-2">{item.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{item.description}</p>
                 <div className="w-full flex items-center justify-between mt-auto">
-                  <span className="font-semibold text-lg text-primary">{item.price}</span>
+                  {/* <span className="font-semibold text-lg text-primary">{item.price}</span> */}
                   <Link href={`/collections/${item.id}`}>
                     <Button 
                       variant="outline" 

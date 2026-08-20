@@ -9,7 +9,7 @@ export default function Craftsmanship() {
   ];
 
   return (
-    <section className="py-0 bg-background flex flex-col lg:flex-row">
+    <section id="craftsmanship" className="py-0 bg-background flex flex-col lg:flex-row">
       {/* Left side: Image */}
       <div className="w-full lg:w-1/2 min-h-[50vh] relative">
         <img 

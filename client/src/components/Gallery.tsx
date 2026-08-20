@@ -8,7 +8,7 @@ interface GalleryProps {
 
 export default function Gallery({ isLoggedIn }: GalleryProps) {
   return (
-    <section className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
+    <section id="gallery" className="py-24 px-6 md:px-12 bg-background bg-pattern relative">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 text-center md:text-left">
           <div>
