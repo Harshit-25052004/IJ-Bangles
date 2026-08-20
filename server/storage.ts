@@ -2,6 +2,8 @@ import { type User, type InsertUser, type Collection, type InsertCollection } fr
 import { randomUUID } from "crypto";
 import { MongoClient, ObjectId } from "mongodb";
 
+import startingCollections from "./startingData.json" with { type: "json" };
+
 // MongoDB connection
 let mongoClient: MongoClient | null = null;
 let isConnected = false;
@@ -62,9 +64,14 @@ export interface IStorage {
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
+  private collections: Map<string, Collection>;
 
   constructor() {
     this.users = new Map();
+    this.collections = new Map();
+    (startingCollections as Collection[]).forEach((item) => {
+      this.collections.set(item.id, item);
+    });
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -85,31 +92,47 @@ export class MemStorage implements IStorage {
   }
 
   async getCollections(): Promise<Collection[]> {
-    throw new Error("Collections storage not implemented for MemStorage");
+    return Array.from(this.collections.values());
   }
 
   async getCollectionById(id: string): Promise<Collection | undefined> {
-    throw new Error("Collections storage not implemented for MemStorage");
+    return this.collections.get(id);
   }
 
   async createCollection(collection: InsertCollection): Promise<Collection> {
-    throw new Error("Collections storage not implemented for MemStorage");
+    const id = collection.id || randomUUID();
+    const newCollection: Collection = {
+      id,
+      name: collection.name,
+      description: collection.description,
+      price: collection.price,
+      mainImage: collection.mainImage,
+      images: collection.images || [],
+      createdAt: collection.createdAt || new Date().toISOString(),
+    };
+    this.collections.set(id, newCollection);
+    return newCollection;
   }
 
   async updateCollection(
     id: string,
     collection: Partial<InsertCollection>
   ): Promise<Collection | undefined> {
-    throw new Error("Collections storage not implemented for MemStorage");
+    const existing = this.collections.get(id);
+    if (!existing) return undefined;
+    const updated: Collection = { ...existing, ...collection };
+    this.collections.set(id, updated);
+    return updated;
   }
 
   async deleteCollection(id: string): Promise<boolean> {
-    throw new Error("Collections storage not implemented for MemStorage");
+    return this.collections.delete(id);
   }
 }
 
 export class MongoStorage implements IStorage {
   private client: MongoClient;
+  private hasSeeded = false;
 
   constructor(client: MongoClient) {
     this.client = client;
@@ -119,6 +142,22 @@ export class MongoStorage implements IStorage {
     return this.client
       .db(DATABASE_NAME)
       .collection<Omit<Collection, "id"> & { _id?: ObjectId }>(COLLECTIONS_NAME);
+  }
+
+  private async ensureSeedData() {
+    if (this.hasSeeded) return;
+    try {
+      const collectionsDb = this.getCollectionsDb();
+      const count = await collectionsDb.countDocuments();
+      if (count === 0) {
+        console.log("Seeding initial collections into MongoDB...");
+        await collectionsDb.insertMany(startingCollections as any);
+        console.log("Seeded initial collections successfully.");
+      }
+      this.hasSeeded = true;
+    } catch (e) {
+      console.warn("Could not check/seed initial collections:", e);
+    }
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -137,6 +176,7 @@ export class MongoStorage implements IStorage {
   }
 
   async getCollections(): Promise<Collection[]> {
+    await this.ensureSeedData();
     const collectionsDb = this.getCollectionsDb();
     const docs = await collectionsDb.find({}).toArray();
     return docs.map((doc) => ({

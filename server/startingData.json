@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Royal Kundan Bangles",
+    "description": "Traditional handcrafted kundan bangles featuring regal designs and intricate gold detailing.",
+    "price": "₹5,000",
+    "mainImage": "/assets/images/bangle-kundan.webp",
+    "images": [
+      "/assets/images/bangle-kundan.webp",
+      "/assets/images/gallery-1.webp"
+    ],
+    "createdAt": "2026-04-12T10:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "name": "Bridal Bangles Set",
+    "description": "Complete bridal bangle set crafted with traditional Rajasthani grandeur for wedding ceremonies.",
+    "price": "₹20,000",
+    "mainImage": "/assets/images/bangle-bridal.webp",
+    "images": [
+      "/assets/images/bangle-bridal.webp",
+      "/assets/images/gallery-2.webp"
+    ],
+    "createdAt": "2026-04-12T11:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "name": "Traditional Lac Bangles",
+    "description": "Hand-rolled authentic Jaipur lac bangles with vibrant colors, micro-mirrors, and timeless patterns.",
+    "price": "₹3,500",
+    "mainImage": "/assets/images/bangle-lac.webp",
+    "images": [
+      "/assets/images/bangle-lac.webp",
+      "/assets/images/gallery-3.webp"
+    ],
+    "createdAt": "2026-04-12T12:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "name": "Stone Studded Bangles",
+    "description": "Exquisite semi-precious stone studded bangles created by master artisans with royal finish.",
+    "price": "₹8,000",
+    "mainImage": "/assets/images/bangle-stone.webp",
+    "images": [
+      "/assets/images/bangle-stone.webp",
+      "/assets/images/artisan-hands.webp"
+    ],
+    "createdAt": "2026-04-12T13:00:00.000Z"
+  }
+]
