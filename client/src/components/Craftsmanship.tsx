@@ -13,8 +13,12 @@ export default function Craftsmanship() {
       {/* Left side: Image */}
       <div className="w-full lg:w-1/2 min-h-[50vh] relative">
         <img 
-          src="/assets/images/artisan-hands.png" 
+          src="/assets/images/artisan-hands.webp" 
           alt="Artisans crafting bangles" 
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="600"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20" />

@@ -14,9 +14,12 @@ export default function Hero() {
            loop 
            muted 
            playsInline
+           preload="metadata"
+           poster="/assets/videos/hero-poster.webp"
            className="w-full h-full object-cover opacity-80"
          >
-            <source src="/assets/images/hero-bg.mp4" type="video/mp4" />
+            <source src="/assets/videos/hero-bg.webm" type="video/webm" />
+            <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
          </video>
       </div>
 

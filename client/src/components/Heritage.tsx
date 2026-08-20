@@ -11,8 +11,12 @@ export default function Heritage() {
           <div className="order-2 lg:order-1 relative">
             <div className="absolute -inset-4 border-2 border-secondary/30 rounded-t-full hidden lg:block"></div>
             <img 
-              src="/assets/images/heritage-women.png" 
+              src="/assets/images/heritage-women.webp" 
               alt="Rajasthani Heritage" 
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="800"
               className="w-full h-auto object-cover rounded-t-[40%] rounded-b-md shadow-2xl relative z-10"
             />
           </div>

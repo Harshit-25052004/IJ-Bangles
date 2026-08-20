@@ -35,19 +35,19 @@ export default function Gallery({ isLoggedIn }: GalleryProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="relative group overflow-hidden aspect-square cursor-pointer">
-            <img src="/assets/images/gallery-1.png" alt="Bride wearing bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-1.webp" alt="Bride wearing bangles" loading="lazy" decoding="async" width="600" height="600" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Bridal</span>
             </div>
           </div>
           <div className="relative group overflow-hidden aspect-[3/4] md:aspect-square md:-mt-8 cursor-pointer">
-            <img src="/assets/images/gallery-2.png" alt="Festive look" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-2.webp" alt="Festive look" loading="lazy" decoding="async" width="600" height="800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Festive</span>
             </div>
           </div>
           <div className="relative group overflow-hidden aspect-square cursor-pointer">
-            <img src="/assets/images/gallery-3.png" alt="Close up of bangles" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src="/assets/images/gallery-3.webp" alt="Close up of bangles" loading="lazy" decoding="async" width="600" height="600" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-serif text-xl tracking-widest border border-white px-6 py-2">Details</span>
             </div>
